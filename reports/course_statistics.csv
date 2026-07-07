@@ -1,0 +1,6 @@
+course_name,num_grades,avg_grade,min_grade,max_grade
+Linear Algebra,1,45.0,45.0,45.0
+Data Science,1,60.0,60.0,60.0
+Calculus,3,74.33333333333333,65.0,88.0
+Intro to Programming,5,83.0,58.0,99.0
+Data Structures,3,86.0,80.0,93.0
