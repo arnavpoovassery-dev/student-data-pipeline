@@ -1,0 +1,9 @@
+student_id,first_name,last_name,major,year,email
+101,Alice,Johnson,Computer Science,2,alice.johnson@school.edu
+102,Bob,Smith,Mathematics,3,bob.smith@school.edu
+103,Carlos,Lee,Computer Science,1,carlos.lee@school.edu
+104,Dana,Kim,Statistics,4,
+105,Elena,Nguyen,Computer Science,2,elena.nguyen@school.edu
+106,Frank,Ortiz,Mathematics,1,frank.ortiz@school.edu
+107,Grace,Patel,Computer Science,3,grace.patel@school.edu
+108,Henry,Wu,Statistics,2,henry.wu@school.edu
