@@ -61,6 +61,39 @@ def hardest_course(conn):
     """)
     return cursor.fetchone()
 
+def update_grade(conn, grade_id, new_grade):
+    """Correct a specific grade, e.g. after a regrade request."""
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT grade FROM grades WHERE grade_id = ?;", (grade_id,))
+    existing = cursor.fetchone()
+    if existing is None:
+        print(f"No grade found with grade_id={grade_id}")
+        return
+
+    cursor.execute("""
+        UPDATE grades
+        SET grade = ?
+        WHERE grade_id = ?;
+    """, (new_grade, grade_id))
+    conn.commit()
+    print(f"Updated grade_id={grade_id}: {existing[0]} -> {new_grade}")
+
+
+def remove_grade(conn, grade_id):
+    """Remove a grade entry, e.g. a student withdrew from the course."""
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM grades WHERE grade_id = ?;", (grade_id,))
+    existing = cursor.fetchone()
+    if existing is None:
+        print(f"No grade found with grade_id={grade_id}")
+        return
+
+    cursor.execute("DELETE FROM grades WHERE grade_id = ?;", (grade_id,))
+    conn.commit()
+    print(f"Deleted grade_id={grade_id}: {existing}")
+
 
 if __name__ == "__main__":
     conn = create_connection()
@@ -79,5 +112,11 @@ if __name__ == "__main__":
         print(row)
 
     print("\nHardest course:", hardest_course(conn))
+
+    print("\n--- UPDATE example ---")
+    update_grade(conn, grade_id=5, new_grade=65)  # Carlos's CS101 grade, regraded from 58 to 65
+
+    print("\n--- DELETE example ---")
+    remove_grade(conn, grade_id=10)  # Frank withdrew from MATH19
 
     conn.close()
