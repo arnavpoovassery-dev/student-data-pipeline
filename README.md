@@ -15,6 +15,7 @@ A Python + SQL ETL pipeline that loads student, course, and grade data from CSV 
 Python, SQLite, Pandas, Git
 
 ## Project structure
+```
 student-data-pipeline/
 ├── data/               # input CSV files
 ├── database/           # generated SQLite database (not tracked in git)
@@ -26,14 +27,16 @@ student-data-pipeline/
 │   └── reports.py           # runs queries, writes results to CSV reports
 ├── requirements.txt
 └── README.md
+```
 
 ## How to run it
-
+```
 pip install -r requirements.txt
 py src/create_database.py
 py src/load_data.py
 py src/queries.py
 py src/reports.py
+```
 
 This will create `database/school.db`, load the sample CSVs into it, print query results to the terminal, and generate report files in `reports/`.
 
